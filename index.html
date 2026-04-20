@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biological & Physical Oceanography</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    :root { --week13-sidebar-width: 330px; }
+    .slide-box { background:#2c4a6e; color:white; border-radius:8px; padding:14px 18px; margin-bottom:28px; }
+    .slide-label { font-size:0.8rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; }
+    .slide-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; font-size:0.75rem; line-height:1.6; }
+    .slide-box .part-label { font-size:0.68rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#7fa8cc; margin-top:8px; margin-bottom:2px; grid-column: 1 / -1; }
+    .video-links { margin-top: 6px; }
+    .video-links a { display:inline-block; font-size:0.72rem; margin-right:8px; color:#1a6644; }
+    .summary-table td ul { margin: 4px 0 0 0; padding-left: 1.1em; font-size: 0.85em; line-height: 1.55; color: inherit; }
+    .summary-table td ul li { margin-bottom: 2px; }
+    #page-lecture .lecture-hero { transition: margin-left 180ms ease, width 180ms ease; }
+    body.week13-view-active.week13-sidebar-open #page-lecture .lecture-hero {
+      margin-left: var(--week13-sidebar-width);
+      width: calc(100% - var(--week13-sidebar-width));
+    }
+    .week13-shell { position: relative; min-height: 100%; }
+    .week13-sidebar {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      bottom: 0;
+      width: var(--week13-sidebar-width);
+      overflow-y: auto;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      background: #f2f5fa;
+      z-index: 120;
+      transform: translateX(-100%);
+      transition: transform 180ms ease;
+    }
+    .week13-main {
+      margin-left: 0;
+      padding: 1rem 1rem 2rem;
+      transition: margin-left 180ms ease;
+    }
+    .week13-shell.sidebar-open .week13-sidebar { transform: translateX(0); }
+    .week13-shell.sidebar-open .week13-main { margin-left: var(--week13-sidebar-width); }
+    .week13-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      color: #d9e7f6;
+      cursor: pointer;
+      margin-right: .65rem;
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .week13-menu-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
+    .week13-menu-btn.visible { display: inline-flex; }
+    .week13-nav-block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem; margin-bottom: 0.85rem; }
+    .week13-nav-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.45rem; }
+    .week13-nav-title { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem; }
+    .week13-nav-head .week13-nav-title { margin-bottom: 0; }
+    .week13-nav-toggle { border: 1px solid #d2dde9; background: #f5f9fd; color: #3d597a; border-radius: 6px; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 0.22rem 0.45rem; cursor: pointer; }
+    .week13-nav-toggle:hover { background: #eaf2fb; color: #20466f; }
+    .week13-lecture-list { list-style: none; display: grid; gap: 0.3rem; }
+    .week13-lecture-item { font-size: 12px; color: var(--text); background: #f8fafc; border: 1px solid #e7edf4; border-radius: 7px; padding: 0.35rem 0.45rem; line-height: 1.35; }
+    .week13-lecture-item.current { background: #e9f3f8; border-color: #c9dde8; font-weight: 600; }
+    .week13-nav-block.lecture-collapsed .week13-lecture-item:not(.current) { display: none; }
+    .week13-subnav { list-style: none; margin-top: 0.45rem; display: grid; gap: 0.25rem; }
+    .week13-subnav a { display: block; font-size: 12px; color: var(--ocean-deep); background: #ffffff; border: 1px solid #dbe6ef; border-radius: 6px; padding: 0.32rem 0.45rem; text-decoration: none; }
+    .week13-subnav a:hover { background: #eef5fb; }
+    .week13-section-anchor { scroll-margin-top: 84px; }
+    .week13-glossary { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem; }
+    .week13-glossary h3 { font-size: 14px; margin-bottom: 0.3rem; }
+    .week13-glossary .sub { font-size: 12px; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.5; }
+    .week13-section { margin-bottom: 0.75rem; }
+    .week13-section:last-child { margin-bottom: 0; }
+    .week13-title { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem; }
+    .week13-list { display: grid; gap: 0.35rem; }
+    .week13-item { font-size: 12px; line-height: 1.45; color: var(--text); background: #f8fafc; border: 1px solid #e7edf4; border-radius: 7px; padding: 0.35rem 0.45rem; }
+    .week13-item strong { font-weight: 700; }
+    .week13-item .dim { color: var(--text-muted); }
+    .week13-glossary-details summary { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); cursor: pointer; padding: 0.4rem 0; list-style: none; display: flex; align-items: center; gap: 0.35rem; }
+    .week13-glossary-details summary::before { content: '▶'; font-size: 9px; transition: transform 150ms; }
+    .week13-glossary-details[open] summary::before { transform: rotate(90deg); }
+    .week13-glossary-details summary::-webkit-details-marker { display: none; }
+    .chip-row { display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap; }
+    .chip-row.color-diatom { background: #F5F4DC; border-color: #DEDA9E; }
+    .chip-row.color-dino { background: #FAE9DC; border-color: #DEB89A; }
+    .chip-row.color-cyano { background: #E2F3F2; border-color: #A8D8D5; }
+    .chip-row.color-cocco { background: #E8EFF8; border-color: #B8CEE8; }
+    .chip-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .chip-diatom { background: #C8BB35; }
+    .chip-dino { background: #B8622A; }
+    .chip-cyano { background: #5BA8A0; }
+    .chip-cocco { background: #5B8DB8; }
+    .chip-microzoo { background: #7C66C9; }
+    .chip-other { background: #8A919C; }
+    @media (max-width: 980px) {
+      :root { --week13-sidebar-width: min(88vw, 330px); }
+      .week13-main { margin-left: 0; padding: 1rem 1.25rem 2rem; }
+    }
+
+    /* Species card click affordance */
+    .species-card { cursor: pointer; transition: box-shadow 120ms, transform 120ms; }
+    .species-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.12); transform: translateY(-1px); }
+
+    /* Lightbox */
+    #speciesLightbox {
+      display: none; position: fixed; inset: 0; z-index: 900;
+      background: rgba(10,20,40,.65); backdrop-filter: blur(3px);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    #speciesLightbox.open { display: flex; }
+    .lb-panel {
+      background: #fff; border-radius: 16px; max-width: 540px; width: 100%;
+      max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      animation: lbIn 160ms ease;
+    }
+    @keyframes lbIn { from { opacity:0; transform:scale(.95) translateY(8px); } to { opacity:1; transform:none; } }
+    .lb-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px 10px; border-bottom: 1px solid #eee;
+    }
+    .lb-group-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 99px; color: #fff;
+    }
+    .lb-close {
+      background: none; border: none; font-size: 20px; color: #888; cursor: pointer;
+      padding: 2px 6px; border-radius: 6px; line-height: 1;
+    }
+    .lb-close:hover { background: #f0f0f0; color: #333; }
+    .lb-images { display: flex; gap: 16px; padding: 16px 16px 0; align-items: center; justify-content: center; }
+    .lb-images img.lb-illus { width: 110px; height: 110px; object-fit: contain; }
+    .lb-images img.lb-micro { width: 110px; height: 110px; object-fit: contain; border-radius: 50%; }
+    .lb-body { padding: 14px 16px 20px; }
+    .lb-name { font-size: 18px; font-style: italic; font-weight: 600; margin-bottom: 4px; color: #111; }
+    .lb-desc { font-size: 13px; color: #555; margin-bottom: 14px; line-height: 1.55; }
+    .lb-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+    .lb-tag { font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 20px; white-space: nowrap; }
+    .lb-tag-toxic { background: #FCEBEB; color: #791F1F; }
+    .lb-tag-safe  { background: #EAF3DE; color: #27500A; }
+    .lb-tag-hab   { background: #FAEEDA; color: #633806; }
+    .lb-divider { height: 1px; background: #eee; margin: 10px 0; }
+    .lb-meta { display: grid; gap: 5px; margin-bottom: 10px; }
+    .lb-row { display: flex; gap: 6px; font-size: 12px; }
+    .lb-label { font-weight: 600; color: #555; flex-shrink: 0; min-width: 90px; }
+    .lb-val { color: #222; }
+    .lb-pct-section { margin-top: 8px; }
+    .lb-pct-label { font-size: 11px; font-weight: 600; color: #555; margin-bottom: 4px; }
+    .lb-pct-bar-wrap { display: flex; align-items: center; gap: 8px; }
+    .lb-pct-bar-bg { flex: 1; height: 6px; border-radius: 3px; background: #eee; }
+    .lb-pct-bar-fill { height: 6px; border-radius: 3px; }
+    .lb-pct-num { font-size: 11px; font-weight: 600; min-width: 36px; text-align: right; }
+    .lb-pct-note { font-size: 11px; color: #888; margin-top: 4px; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <button id="week13MenuBtn" class="week13-menu-btn" onclick="toggleWeek13Sidebar(event)" aria-label="Toggle lecture sidebar" title="Toggle lecture sidebar">☰</button>
+  <div class="nav-brand">DEMO • Kendall-Bar • <span>Biological & Physical Oceanography</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" data-page="syllabus" onclick="showPage(event,'syllabus')">Syllabus</button>
+    <button class="nav-link" id="nav-lecture" data-page="lecture" onclick="showPage(event,'lecture')">Week 13</button>
+  </div>
+</nav>
+
+<div id="page-syllabus" class="page active">
+  <div class="hero" id="siteHero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-tag">DEMO COURSE WEBSITE</div>
+    <h1>Biological & Physical Oceanography</h1>
+    <p>Advanced topics from phytoplankton to fisheries, with emphasis on physical processes and their ecological implications.</p>
+  </div>
+  <div class="container">
+    <div class="section-heading">Course Schedule</div>
+    <div class="week-list" id="weekList"></div>
+  </div>
+</div>
+
+<div id="page-lecture" class="page">
+  <div class="lecture-hero">
+    <button class="back-btn" onclick="showPage(event,'syllabus')">← Back to Syllabus</button>
+    <div class="week-label">Week 13 · Lecture</div>
+    <h1>Phytoplankton Identification and Domoic Acid Monitoring</h1>
+    <p class="subtitle">Simplified Week 13: reference image, field guide, and Santa Cruz Wharf domoic acid timeseries.</p>
+  </div>
+
+  <div class="week13-shell">
+      <aside class="week13-sidebar">
+        <div class="week13-nav-block lecture-collapsed" id="week13NavBlock">
+          <div class="week13-nav-head">
+            <div class="week13-nav-title">Lecture Sections</div>
+            <button id="week13LectureToggle" class="week13-nav-toggle" type="button" onclick="toggleLectureSections(event)" aria-expanded="false">Show All</button>
+          </div>
+          <ul class="week13-lecture-list" id="week13LectureList"></ul>
+        </div>
+        <div class="week13-glossary">
+          <div class="week13-section">
+            <div class="week13-title">Color Groups</div>
+            <div class="week13-list">
+              <div class="week13-item chip-row color-diatom"><span class="chip-dot chip-diatom"></span><strong>Diatom</strong><span class="dim">Silica frustule; pennate or centric</span></div>
+              <div class="week13-item chip-row color-dino"><span class="chip-dot chip-dino"></span><strong>Dinoflagellate</strong><span class="dim">Thecate or naked; two flagella</span></div>
+              <div class="week13-item chip-row color-cyano"><span class="chip-dot chip-cyano"></span><strong>Cyanobacteria</strong><span class="dim">Prokaryotic; cells or filaments</span></div>
+              <div class="week13-item chip-row color-cocco"><span class="chip-dot chip-cocco"></span><strong>Coccolithophore</strong><span class="dim">Calcite coccolith plates</span></div>
+              <div class="week13-item chip-row"><span class="chip-dot chip-microzoo"></span><strong>Microzooplankton</strong><span class="dim">Ciliates; heterotrophic grazers</span></div>
+              <div class="week13-item chip-row"><span class="chip-dot chip-other"></span><strong>Other</strong><span class="dim">Mixed or unmapped groups</span></div>
+            </div>
+          </div>
+
+          <details class="week13-glossary-details">
+            <summary>IFCB Shorthand Criteria</summary>
+            <div style="margin-top:0.5rem">
+              <div class="week13-section">
+                <div class="week13-title">Shape Terms</div>
+                <div class="week13-list">
+                  <div class="week13-item"><strong>Pennate</strong> <span class="dim">elongate, bilateral symmetry</span></div>
+                  <div class="week13-item"><strong>Centric</strong> <span class="dim">radial/circular symmetry</span></div>
+                  <div class="week13-item"><strong>Chain-forming</strong> <span class="dim">linked cells in rows or spirals</span></div>
+                  <div class="week13-item"><strong>Horned</strong> <span class="dim">apical/antapical projections</span></div>
+                  <div class="week13-item"><strong>Thecate</strong> <span class="dim">armored cellulose plate texture</span></div>
+                  <div class="week13-item"><strong>Fusiform</strong> <span class="dim">spindle-shaped, tapered ends</span></div>
+                  <div class="week13-item"><strong>Filamentous</strong> <span class="dim">thread-like multicell chains</span></div>
+                  <div class="week13-item"><strong>Coccoid</strong> <span class="dim">small, rounded single cells</span></div>
+                </div>
+              </div>
+              <div class="week13-section">
+                <div class="week13-title">Size Terms</div>
+                <div class="week13-list">
+                  <div class="week13-item"><strong>Pico</strong> <span class="dim">&lt;2 µm</span></div>
+                  <div class="week13-item"><strong>Nano</strong> <span class="dim">2–20 µm</span></div>
+                  <div class="week13-item"><strong>Micro</strong> <span class="dim">20–200 µm</span></div>
+                  <div class="week13-item"><strong>Meso</strong> <span class="dim">&gt;200 µm</span></div>
+                </div>
+              </div>
+              <div class="week13-section">
+                <div class="week13-title">Feature Terms</div>
+                <div class="week13-list">
+                  <div class="week13-item"><strong>Area / Biovolume</strong> <span class="dim">size proxy</span></div>
+                  <div class="week13-item"><strong>Eccentricity</strong> <span class="dim">elongation (0 round → 1 elongated)</span></div>
+                  <div class="week13-item"><strong>Solidity</strong> <span class="dim">edge complexity / concavity</span></div>
+                  <div class="week13-item"><strong>Texture entropy</strong> <span class="dim">internal heterogeneity</span></div>
+                  <div class="week13-item"><strong>Major/minor axis</strong> <span class="dim">principal dimensions</span></div>
+                </div>
+              </div>
+              <div class="week13-section">
+                <div class="week13-title">Group Cues</div>
+                <div class="week13-list">
+                  <div class="week13-item"><strong>Diatoms:</strong> silica frustule; golden-brown pigments; chain-capable</div>
+                  <div class="week13-item"><strong>Dinoflagellates:</strong> thecate or naked; many mixotrophic</div>
+                  <div class="week13-item"><strong>Coccolithophores:</strong> calcite plates; small open-ocean cells</div>
+                  <div class="week13-item"><strong>Cyanobacteria:</strong> prokaryotic; unicellular or filamentous</div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </aside>
+
+      <main class="week13-main">
+    <section id="week13-plankton-activity" class="week13-section-anchor">
+    <div class="viz-card">
+      <div class="viz-card-header">
+        <h3>Phytoplankton &amp; the Tree of Life</h3>
+        <span class="badge badge-tool">Lecture visual</span>
+      </div>
+      <div class="viz-body" style="padding:0.75rem">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+          <img
+            src="assets/species/HAB-Phylogeny-captions.png"
+            alt="Phytoplankton phylogeny with captions"
+            style="max-width:100%;height:auto;display:block;border-radius:8px"
+          >
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <img
+              src="assets/species/HAB-Food-Web.png"
+              alt="HAB food web diagram"
+              style="max-width:100%;height:auto;display:block;border-radius:8px"
+            >
+            <img
+              src="assets/species/HAB-Distribution-US.png"
+              alt="HAB distribution across US coasts"
+              style="max-width:100%;height:auto;display:block;border-radius:8px"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="viz-card">
+      <div class="viz-card-header">
+        <h3>Plankton ID Activity &amp; Field Guide</h3>
+        <span class="badge badge-activity">Lecture 13 section</span>
+      </div>
+      <div class="viz-body" style="padding:0.75rem 1rem">
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:1rem">For each species below, observe the illustration and microscope image, then identify the phytoplankton group and key morphological features.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+
+          <!-- CYANOBACTERIA -->
+          <div class="species-card" onclick="openSpeciesLightbox('Dolichospermum')" style="border-radius:10px;overflow:hidden;border:2px solid #5BA8A0;background:#fff">
+            <div style="background:#5BA8A0;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Cyanobacteria</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Dolichospermum_33x.png" alt="Dolichospermum illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Dolichospermum_microscope.png" alt="Dolichospermum microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Dolichospermum</strong> spp.<br>
+                <span style="color:#555">Filamentous chains; cylindrical/barrel cells; heterocysts for N₂ fixation; freshwater cyanotoxins</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COCCOLITHOPHORE -->
+          <div class="species-card" onclick="openSpeciesLightbox('Emiliania huxleyi')" style="border-radius:10px;overflow:hidden;border:2px solid #5B8DB8;background:#fff">
+            <div style="background:#5B8DB8;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Coccolithophore</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Emiliania huxleyi_33x.png" alt="Emiliania huxleyi illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Emiliania huxleyi_microscope.png" alt="Emiliania huxleyi microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Emiliania huxleyi</strong><br>
+                <span style="color:#555">Spherical; calcium carbonate coccolith plates; no HAB; abundant in CCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIATOM: Pseudo-nitzschia -->
+          <div class="species-card" onclick="openSpeciesLightbox('Pseudo-nitzschia')" style="border-radius:10px;overflow:hidden;border:2px solid #C8BB35;background:#fff">
+            <div style="background:#C8BB35;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Diatom</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Pseudo-nitzschia_33x.png" alt="Pseudo-nitzschia illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Pseudo-nitzschia_microscope.png" alt="Pseudo-nitzschia microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Pseudo-nitzschia</strong> spp.<br>
+                <span style="color:#555">Elongate fusiform; silica frustule; chains; ~½ species produce <strong>domoic acid</strong> (ASP)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIATOM: Chaetoceros -->
+          <div class="species-card" onclick="openSpeciesLightbox('Chaetoceros')" style="border-radius:10px;overflow:hidden;border:2px solid #C8BB35;background:#fff">
+            <div style="background:#C8BB35;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Diatom</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Chaetoceros_33x.png" alt="Chaetoceros illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Chaetoceros_microscope.png" alt="Chaetoceros microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Chaetoceros</strong> spp.<br>
+                <span style="color:#555">Rectangular cells; long corner setae; coiled/curved chains; no HAB; abundant in CCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Dinophysis -->
+          <div class="species-card" onclick="openSpeciesLightbox('Dinophysis')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Dinophysis_33x.png" alt="Dinophysis illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Dinophysis_microscope.png" alt="Dinophysis microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Dinophysis</strong> spp.<br>
+                <span style="color:#555">Armored; laterally flattened; large hypotheca (~¾); girdle lists; <strong>okadaic acid</strong> (DSP)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Karenia brevis -->
+          <div class="species-card" onclick="openSpeciesLightbox('Karenia brevis')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Karenia brevis_33x.png" alt="Karenia brevis illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Karenia brevis_microscope.png" alt="Karenia brevis microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Karenia brevis</strong><br>
+                <span style="color:#555">Unarmored; apical groove; dorsoventrally flattened; <strong>brevetoxins</strong> (NSP); Florida red tide</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Margalefidinium -->
+          <div class="species-card" onclick="openSpeciesLightbox('Margalefidinium')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Margalefidinium_33x.png" alt="Margalefidinium illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Margalefidinium_microscope.png" alt="Margalefidinium microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Margalefidinium</strong> spp.<br>
+                <span style="color:#555">Unarmored; cingulum rotates &gt;1.5×; reactive oxygen species; fish kills / brown tide</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Tripos -->
+          <div class="species-card" onclick="openSpeciesLightbox('Tripos lineatus')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Tripos lineatus_33x.png" alt="Tripos illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Tripos lineatus_microscope.png" alt="Tripos microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Tripos</strong> spp.<br>
+                <span style="color:#555">Heavily thecate; 1–4 apical/antapical horns; no HAB; common in CCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Gambierdiscus -->
+          <div class="species-card" onclick="openSpeciesLightbox('Gambierdiscus')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Gambierdiscus_33x.png" alt="Gambierdiscus illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Gambierdiscus_microscope.png" alt="Gambierdiscus microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Gambierdiscus</strong> spp.<br>
+                <span style="color:#555">Lens-shaped; anterio-posteriorly compressed; thecate; <strong>ciguatoxins</strong> (CFP); tropical reefs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DINOFLAGELLATE: Alexandrium -->
+          <div class="species-card" onclick="openSpeciesLightbox('Alexandrium catenella')" style="border-radius:10px;overflow:hidden;border:2px solid #B8622A;background:#fff">
+            <div style="background:#B8622A;color:#fff;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Dinoflagellate</div>
+            <div style="padding:10px;display:flex;gap:10px;align-items:flex-start">
+              <img src="assets/species/Alexandrium catenella_33x.png" alt="Alexandrium catenella illustration" style="width:72px;height:72px;object-fit:contain;flex-shrink:0">
+              <img src="assets/species/Alexandrium catenella_microscope.png" alt="Alexandrium catenella microscope" style="width:72px;height:72px;object-fit:contain;border-radius:50%;flex-shrink:0">
+              <div style="font-size:12px;line-height:1.5">
+                <strong style="font-style:italic">Alexandrium catenella</strong><br>
+                <span style="color:#555">Armored; spherical; chains; <strong>saxitoxins</strong> (PSP); abundant in CCE</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:0.75rem">Click any species card to see full field guide details.</p>
+      </div>
+    </div>
+    </section>
+
+    <section id="week13-timeseries" class="week13-section-anchor">
+    <div class="viz-card">
+      <div class="viz-card-header">
+        <h3>Santa Cruz Wharf — Pseudo-nitzschia &amp; Domoic Acid Timeseries</h3>
+        <span class="badge badge-live">Interactive</span>
+      </div>
+      <div class="viz-body" style="padding:0">
+        <iframe
+          src="santa-cruz-wharf-timeseries.html?embed=1"
+          title="Santa Cruz Wharf timeseries"
+          style="width:100%;height:760px;border:none;border-radius:0 0 12px 12px;display:block"
+          loading="lazy"
+        ></iframe>
+        <div style="padding:0.75rem 1rem;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);background:#fafcfe">
+          Open separately: <a href="santa-cruz-wharf-timeseries.html" target="_blank" rel="noopener noreferrer">Santa Cruz Wharf timeseries page</a>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section id="week13-video-gallery" class="week13-section-anchor">
+    <div class="viz-card">
+      <div class="viz-card-header">
+        <h3>Video Gallery (Coming Next)</h3>
+        <span class="badge badge-activity">Placeholder</span>
+      </div>
+      <div class="viz-body">
+        <p style="font-size:13px;color:var(--text-muted)">Space reserved for the video card gallery you want to add at the bottom.</p>
+      </div>
+    </div>
+    </section>
+      </main>
+  </div>
+</div>
+
+<!-- Hero parallax -->
+<script>
+(function() {
+  var bg = document.getElementById('heroBg');
+  var hero = document.getElementById('siteHero');
+  if (!bg || !hero) return;
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var heroH = hero.offsetHeight;
+        // Only apply while hero is visible
+        if (scrollY < heroH + 56) {
+          bg.style.transform = 'translateY(' + (scrollY * 0.35).toFixed(1) + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+
+<!-- Species lightbox -->
+<div id="speciesLightbox" role="dialog" aria-modal="true" aria-label="Species detail">
+  <div class="lb-panel" id="lbPanel">
+    <div class="lb-header">
+      <span class="lb-group-badge" id="lbGroupBadge"></span>
+      <button class="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+    </div>
+    <div class="lb-images">
+      <img class="lb-illus" id="lbIllus" src="" alt="">
+      <img class="lb-micro" id="lbMicro" src="" alt="">
+    </div>
+    <div class="lb-body">
+      <div class="lb-name" id="lbName"></div>
+      <div class="lb-desc" id="lbDesc"></div>
+      <div class="lb-tags" id="lbTags"></div>
+      <div class="lb-divider"></div>
+      <div class="lb-meta" id="lbMeta"></div>
+      <div class="lb-pct-section">
+        <div class="lb-pct-label">% of genus with toxic representatives</div>
+        <div class="lb-pct-bar-wrap">
+          <div class="lb-pct-bar-bg"><div class="lb-pct-bar-fill" id="lbPctFill" style="width:0%"></div></div>
+          <span class="lb-pct-num" id="lbPctNum"></span>
+        </div>
+        <div class="lb-pct-note" id="lbPctNote"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const GROUP_COLORS = {
+  'Diatom': '#C8BB35',
+  'Dinoflagellate': '#B8622A',
+  'Cyanobacteria': '#5BA8A0',
+  'Coccolithophore': '#5B8DB8'
+};
+
+const SPECIES_DATA = {
+  'Dolichospermum': {
+    name: 'Dolichospermum spp.',
+    group: 'Cyanobacteria',
+    illus: 'assets/species/Dolichospermum_33x.png',
+    micro: 'assets/species/Dolichospermum_microscope.png',
+    desc: 'Filamentous chains; cylindrical/barrel cells; heterocysts for N₂ fixation; freshwater cyanotoxins.',
+    tags: [{ text: 'Toxic — microcystins, anatoxins, saxitoxins', cls: 'lb-tag-toxic' }, { text: 'HAB · freshwater', cls: 'lb-tag-hab' }],
+    shape: 'Cylindrical/barrel cells; end cells often hyaline',
+    chains: 'Yes — filamentous multi-cell chains',
+    cce: '⚠ Adjacent (freshwater)',
+    pct: 50, pctColor: '#E24B4A',
+    pctNote: '~110 spp; roughly half are toxic — strain-level variation within species'
+  },
+  'Emiliania huxleyi': {
+    name: 'Gephyrocapsa huxleyi',
+    group: 'Coccolithophore',
+    illus: 'assets/species/Emiliania huxleyi_33x.png',
+    micro: 'assets/species/Emiliania huxleyi_microscope.png',
+    desc: 'Spherical; calcium carbonate coccolith plates; no HAB; abundant in CCE.',
+    tags: [{ text: 'Non-toxic', cls: 'lb-tag-safe' }],
+    shape: 'Spherical; calcium carbonate coccoliths',
+    chains: 'No',
+    cce: '✓ Yes',
+    pct: 0, pctColor: '#639922',
+    pctNote: '~2 spp in genus; no toxin production known'
+  },
+  'Pseudo-nitzschia': {
+    name: 'Pseudo-nitzschia spp.',
+    group: 'Diatom',
+    illus: 'assets/species/Pseudo-nitzschia_33x.png',
+    micro: 'assets/species/Pseudo-nitzschia_microscope.png',
+    desc: 'Elongate fusiform; silica frustule; chains; ~½ of species produce domoic acid (ASP toxin).',
+    tags: [{ text: 'Toxic — domoic acid', cls: 'lb-tag-toxic' }, { text: 'HAB · ASP', cls: 'lb-tag-hab' }],
+    shape: 'Elongate, fusiform or rectangular in girdle view',
+    chains: 'Yes — overlapping ends, 20+ cells',
+    cce: '✓ Yes',
+    pct: 40, pctColor: '#E24B4A',
+    pctNote: '~60 spp; ~25 confirmed domoic acid producers — and not always'
+  },
+  'Chaetoceros': {
+    name: 'Chaetoceros spp.',
+    group: 'Diatom',
+    illus: 'assets/species/Chaetoceros_33x.png',
+    micro: 'assets/species/Chaetoceros_microscope.png',
+    desc: 'Rectangular cells; long corner setae; coiled/curved chains; no HAB; abundant in CCE.',
+    tags: [{ text: 'Non-toxic', cls: 'lb-tag-safe' }],
+    shape: 'Rectangular cells; long corner setae',
+    chains: 'Yes — coiled, curved or straight',
+    cce: '✓ Yes',
+    pct: 0, pctColor: '#639922',
+    pctNote: '~400 spp; none known to produce toxins'
+  },
+  'Dinophysis': {
+    name: 'Dinophysis spp.',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Dinophysis_33x.png',
+    micro: 'assets/species/Dinophysis_microscope.png',
+    desc: 'Armored; laterally flattened; large hypotheca (~¾); girdle lists; okadaic acid (DSP toxin).',
+    tags: [{ text: 'Toxic — okadaic acid', cls: 'lb-tag-toxic' }, { text: 'HAB · DSP', cls: 'lb-tag-hab' }],
+    shape: 'Armoured; laterally flattened oval; wide girdle lists',
+    chains: 'No',
+    cce: '✓ Yes',
+    pct: 30, pctColor: '#E24B4A',
+    pctNote: '~120 spp; ~30–40 confirmed DSP toxin producers'
+  },
+  'Karenia brevis': {
+    name: 'Karenia brevis',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Karenia brevis_33x.png',
+    micro: 'assets/species/Karenia brevis_microscope.png',
+    desc: 'Unarmored; apical groove; dorsoventrally flattened; brevetoxins (NSP); Florida red tide.',
+    tags: [{ text: 'Toxic — brevetoxins', cls: 'lb-tag-toxic' }, { text: 'HAB · NSP', cls: 'lb-tag-hab' }],
+    shape: 'Unarmoured; dorsoventrally flattened',
+    chains: 'No',
+    cce: '⚠ Rarely',
+    pct: 85, pctColor: '#E24B4A',
+    pctNote: '12 accepted spp; most produce brevetoxins or related compounds'
+  },
+  'Margalefidinium': {
+    name: 'Margalefidinium spp.',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Margalefidinium_33x.png',
+    micro: 'assets/species/Margalefidinium_microscope.png',
+    desc: 'Unarmored; cingulum rotates >1.5×; reactive oxygen species; fish kills / brown tide.',
+    tags: [{ text: 'Toxic — ROS', cls: 'lb-tag-toxic' }, { text: 'HAB · fish kills', cls: 'lb-tag-hab' }],
+    shape: 'Unarmoured; cingulum rotates >1.5×',
+    chains: 'Yes (or single)',
+    cce: '✓ Yes',
+    pct: 100, pctColor: '#E24B4A',
+    pctNote: 'Small genus (~5 spp); all associated with fish kills'
+  },
+  'Tripos lineatus': {
+    name: 'Tripos spp.',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Tripos lineatus_33x.png',
+    micro: 'assets/species/Tripos lineatus_microscope.png',
+    desc: 'Heavily thecate; 1–4 apical/antapical horns; no HAB; common in CCE.',
+    tags: [{ text: 'Non-toxic', cls: 'lb-tag-safe' }],
+    shape: 'Thecate; 1–4 apical/antapical horns',
+    chains: 'No',
+    cce: '✓ Yes',
+    pct: 0, pctColor: '#639922',
+    pctNote: '~100 spp; none known to produce toxins'
+  },
+  'Gambierdiscus': {
+    name: 'Gambierdiscus spp.',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Gambierdiscus_33x.png',
+    micro: 'assets/species/Gambierdiscus_microscope.png',
+    desc: 'Lens-shaped; anterio-posteriorly compressed; thecate; ciguatoxins (CFP); tropical reefs.',
+    tags: [{ text: 'Toxic — ciguatoxins', cls: 'lb-tag-toxic' }, { text: 'HAB · CFP', cls: 'lb-tag-hab' }],
+    shape: 'Lens-shaped, AP-compressed, thecate',
+    chains: 'No',
+    cce: '⚠ Peripheral',
+    pct: 100, pctColor: '#E24B4A',
+    pctNote: '~16 spp; all produce ciguatoxins or maitotoxins'
+  },
+  'Alexandrium catenella': {
+    name: 'Alexandrium catenella',
+    group: 'Dinoflagellate',
+    illus: 'assets/species/Alexandrium catenella_33x.png',
+    micro: 'assets/species/Alexandrium catenella_microscope.png',
+    desc: 'Armored; spherical; chains; saxitoxins (PSP); abundant in CCE.',
+    tags: [{ text: 'Toxic — saxitoxins', cls: 'lb-tag-toxic' }, { text: 'HAB · PSP', cls: 'lb-tag-hab' }],
+    shape: 'Armoured, typically spherical',
+    chains: 'Yes',
+    cce: '✓ Yes',
+    pct: 50, pctColor: '#E24B4A',
+    pctNote: '~30 spp; ~half are toxic, some bioluminescent only'
+  }
+};
+
+function openSpeciesLightbox(key) {
+  const d = SPECIES_DATA[key];
+  if (!d) return;
+  const lb = document.getElementById('speciesLightbox');
+  const color = GROUP_COLORS[d.group] || '#7F7F7F';
+  document.getElementById('lbGroupBadge').textContent = d.group;
+  document.getElementById('lbGroupBadge').style.background = color;
+  document.getElementById('lbIllus').src = d.illus;
+  document.getElementById('lbIllus').alt = d.name + ' illustration';
+  document.getElementById('lbMicro').src = d.micro;
+  document.getElementById('lbMicro').alt = d.name + ' microscope image';
+
+  document.getElementById('lbName').textContent = d.name;
+  document.getElementById('lbDesc').textContent = d.desc;
+  document.getElementById('lbTags').innerHTML = d.tags.map(t =>
+    `<span class="lb-tag ${t.cls}">${t.text}</span>`).join('');
+  document.getElementById('lbMeta').innerHTML = [
+    ['Shape', d.shape],
+    ['Forms chains', d.chains],
+    ['In CCE', d.cce]
+  ].map(([l, v]) =>
+    `<div class="lb-row"><span class="lb-label">${l}</span><span class="lb-val">${v}</span></div>`
+  ).join('');
+  document.getElementById('lbPctFill').style.width = d.pct + '%';
+  document.getElementById('lbPctFill').style.background = d.pctColor;
+  document.getElementById('lbPctNum').textContent = '~' + d.pct + '%';
+  document.getElementById('lbPctNum').style.color = d.pctColor;
+  document.getElementById('lbPctNote').textContent = d.pctNote;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('speciesLightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('speciesLightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('speciesLightbox')) closeLightbox();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

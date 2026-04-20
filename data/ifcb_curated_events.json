@@ -1,0 +1,436 @@
+[
+  {
+    "id": "da_1",
+    "label": "High DA Event",
+    "date": "2022-06-01",
+    "pda_ng_ml": 15.38,
+    "pn_cells_l": 6825,
+    "bin_id": "D20220601T015030_IFCB104",
+    "note": "Peak DA event \u2014 15.4 ng/mL pDA, mixed Pseudo-nitzschia / flagellate community",
+    "rois": [
+      {
+        "pid": "D20220601T015030_IFCB104_00849",
+        "taxon": "Dictyocha",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00849.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00670",
+        "taxon": "Dictyocha",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00670.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00624",
+        "taxon": "Clusterflagellate",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00624.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00369",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00369.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00211",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00211.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00397",
+        "taxon": "Ciliates",
+        "group": "Microzooplankton",
+        "color": "#A45D2A",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00397.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00220",
+        "taxon": "Pennate",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00220.png"
+      },
+      {
+        "pid": "D20220601T015030_IFCB104_00067",
+        "taxon": "Scrip_Het",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.997,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20220601T015030_IFCB104_00067.png"
+      }
+    ]
+  },
+  {
+    "id": "da_2",
+    "label": "High DA Event",
+    "date": "2020-06-02",
+    "pda_ng_ml": 6.12,
+    "pn_cells_l": 2420,
+    "bin_id": "D20200601T200148_IFCB104",
+    "note": "Elevated DA \u2014 6.1 ng/mL, Prorocentrum/Ceratium co-occurrence",
+    "rois": [
+      {
+        "pid": "D20200601T200148_IFCB104_00214",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 0.998,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00214.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00062",
+        "taxon": "Tripos",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 0.997,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00062.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00013",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.997,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00013.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00081",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.997,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00081.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00164",
+        "taxon": "Pseudo-nitzschia",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 0.957,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00164.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00223",
+        "taxon": "Centric",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.949,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00223.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00195",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 0.927,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00195.png"
+      },
+      {
+        "pid": "D20200601T200148_IFCB104_00136",
+        "taxon": "Thalassiosira",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 0.915,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20200601T200148_IFCB104_00136.png"
+      }
+    ]
+  },
+  {
+    "id": "da_3",
+    "label": "Moderate DA Event",
+    "date": "2025-07-16",
+    "pda_ng_ml": 1.79,
+    "pn_cells_l": 6755,
+    "bin_id": "D20250716T031908_IFCB104",
+    "note": "Moderate DA \u2014 1.8 ng/mL, Prorocentrum and Akashiwo dominant",
+    "rois": [
+      {
+        "pid": "D20250716T031908_IFCB104_00668",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00668.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00659",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00659.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00658",
+        "taxon": "Akashiwo sanguinea",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00658.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00652",
+        "taxon": "Akashiwo sanguinea",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00652.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00592",
+        "taxon": "Tripos",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00592.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00278",
+        "taxon": "Clusterflagellate",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00278.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00210",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00210.png"
+      },
+      {
+        "pid": "D20250716T031908_IFCB104_00641",
+        "taxon": "Ciliates",
+        "group": "Microzooplankton",
+        "color": "#A45D2A",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20250716T031908_IFCB104_00641.png"
+      }
+    ]
+  },
+  {
+    "id": "benign_1",
+    "label": "Chaetoceros Bloom (no DA)",
+    "date": "2021-04-14",
+    "pda_ng_ml": 0.0,
+    "pn_cells_l": 0,
+    "bin_id": "D20210413T151252_IFCB117",
+    "note": "Benign diatom bloom \u2014 Chaetoceros dominant (68%), pDA = 0",
+    "rois": [
+      {
+        "pid": "D20210413T151252_IFCB117_00158",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00158.png"
+      },
+      {
+        "pid": "D20210413T151252_IFCB117_00140",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00140.png"
+      },
+      {
+        "pid": "D20210413T151252_IFCB117_00054",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00054.png"
+      },
+      {
+        "pid": "D20210413T151252_IFCB117_00072",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.985,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00072.png"
+      },
+      {
+        "pid": "D20210413T151252_IFCB117_00021",
+        "taxon": "Centric",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.975,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00021.png"
+      },
+      {
+        "pid": "D20210413T151252_IFCB117_00123",
+        "taxon": "Pennate",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.97,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20210413T151252_IFCB117_00123.png"
+      }
+    ]
+  },
+  {
+    "id": "benign_2",
+    "label": "Prorocentrum Bloom (no DA)",
+    "date": "2019-06-12",
+    "pda_ng_ml": 0.0,
+    "pn_cells_l": 60,
+    "bin_id": "D20190612T040130_IFCB104",
+    "note": "Benign dinoflagellate bloom \u2014 Prorocentrum dominant (59%), pDA = 0",
+    "rois": [
+      {
+        "pid": "D20190612T040130_IFCB104_01457",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_01457.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_01448",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_01448.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00776",
+        "taxon": "Dictyocha",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00776.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00704",
+        "taxon": "Ciliates",
+        "group": "Microzooplankton",
+        "color": "#A45D2A",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00704.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00427",
+        "taxon": "Akashiwo sanguinea",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00427.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00439",
+        "taxon": "Dinophysis",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00439.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00816",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.997,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00816.png"
+      },
+      {
+        "pid": "D20190612T040130_IFCB104_00797",
+        "taxon": "Pennate",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.992,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20190612T040130_IFCB104_00797.png"
+      }
+    ]
+  },
+  {
+    "id": "benign_3",
+    "label": "Akashiwo Bloom (no DA)",
+    "date": "2023-11-29",
+    "pda_ng_ml": 0.0,
+    "pn_cells_l": 50,
+    "bin_id": "D20231128T230951_IFCB104",
+    "note": "Benign red tide \u2014 Akashiwo sanguinea dominant (56%), pDA = 0",
+    "rois": [
+      {
+        "pid": "D20231128T230951_IFCB104_00341",
+        "taxon": "Akashiwo sanguinea",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00341.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00295",
+        "taxon": "Akashiwo sanguinea",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00295.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00345",
+        "taxon": "Chaetoceros",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 1.0,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00345.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00129",
+        "taxon": "NanoP_less10",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00129.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00114",
+        "taxon": "Dictyocha",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00114.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00093",
+        "taxon": "Prorocentrum",
+        "group": "Dinoflagellate",
+        "color": "#185FA5",
+        "confidence": 0.999,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00093.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00383",
+        "taxon": "Centric",
+        "group": "Other/Unmapped",
+        "color": "#7F7F7F",
+        "confidence": 0.992,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00383.png"
+      },
+      {
+        "pid": "D20231128T230951_IFCB104_00068",
+        "taxon": "Thalassiosira",
+        "group": "Diatom",
+        "color": "#4B7AD8",
+        "confidence": 0.988,
+        "image_url": "https://ifcb.caloos.org/santa-cruz-municipal-wharf/D20231128T230951_IFCB104_00068.png"
+      }
+    ]
+  }
+]

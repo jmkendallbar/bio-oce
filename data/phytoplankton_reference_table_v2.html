@@ -1,0 +1,265 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.wrap { padding: 1rem 0; }
+.group-block { margin-bottom: 1.5rem; }
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.group-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(255,255,255,.95);
+}
+.group-label {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.group-dino { background: #CC7D38; color: #fff; border-color: #CC7D38; }
+.group-diatom { background: #CEC858; color: #fff; border-color: #CEC858; }
+.group-cyano { background: #65AFB0; color: #fff; border-color: #65AFB0; }
+.group-cocco { background: #6FA9D5; color: #fff; border-color: #6FA9D5; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; }
+.card { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); padding: 12px 14px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.species { font-size: 13px; font-weight: 500; font-style: italic; color: var(--color-text-primary); line-height: 1.3; }
+.slide-badge { font-size: 11px; color: var(--color-text-tertiary); flex-shrink: 0; margin-top: 1px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.tag { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+.tag-toxic { background: #FCEBEB; color: #791F1F; }
+.tag-safe  { background: #EAF3DE; color: #27500A; }
+.tag-hab   { background: #FAEEDA; color: #633806; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); margin-bottom: 8px; }
+.meta-row { display: flex; justify-content: flex-start; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+.meta-label { font-size: 11px; color: var(--color-text-secondary); flex-shrink: 0; font-weight: 600; }
+.meta-row .meta-label::after { content: " — "; color: var(--color-text-tertiary); font-weight: 400; }
+.meta-val { font-size: 11px; color: var(--color-text-primary); text-align: left; }
+.chain-yes { color: #27500A; font-weight: 500; }
+.chain-no  { color: var(--color-text-tertiary); }
+.shape-val { font-size: 11px; color: var(--color-text-secondary); font-style: italic; text-align: left; }
+.pct-bar-wrap { display: flex; align-items: center; gap: 6px; }
+.pct-bar-bg { flex: 1; height: 5px; border-radius: 3px; background: var(--color-border-tertiary); }
+.pct-bar-fill-red  { height: 5px; border-radius: 3px; background: #E24B4A; }
+.pct-bar-fill-green { height: 5px; border-radius: 3px; background: #639922; }
+.pct-label { font-size: 11px; font-weight: 500; min-width: 34px; text-align: right; }
+.pct-label-red   { color: #791F1F; }
+.pct-label-green { color: #27500A; }
+.pct-note { font-size: 10px; color: var(--color-text-tertiary); margin-top: 2px; font-style: italic; }
+</style>
+
+<div class="wrap">
+
+<div class="group-block">
+  <div class="group-header group-dino">
+    <div class="group-dot"></div>
+    <span class="group-label">Dinoflagellates</span>
+  </div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-top"><span class="species">Ceratium sp.</span><span class="slide-badge">Slide 1</span></div>
+      <div class="tag-row"><span class="tag tag-safe">Non-toxic</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Thecate; 1–4 apical/antapical horns</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-no">No</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-green" style="width:0%;"></div></div>
+        <span class="pct-label pct-label-green">~0%</span>
+      </div>
+      <div class="pct-note">~100 spp; none known to produce toxins</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Gambierdiscus toxicus</span><span class="slide-badge">Slide 2</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — ciguatoxins</span><span class="tag tag-hab">HAB · CFP</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Lens-shaped, AP-compressed, thecate</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-no">No</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">⚠ Peripheral</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:100%;"></div></div>
+        <span class="pct-label pct-label-red">~100%</span>
+      </div>
+      <div class="pct-note">~16 spp; all produce ciguatoxins or maitotoxins</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Alexandrium catenella</span><span class="slide-badge">Slide 4</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — saxitoxins</span><span class="tag tag-hab">HAB · PSP</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Armoured, typically spherical</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-yes">Yes</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:50%;"></div></div>
+        <span class="pct-label pct-label-red">~50%</span>
+      </div>
+      <div class="pct-note">~30 spp; ~half are toxic, some bioluminescent only</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Margalefidinium fulvescens</span><span class="slide-badge">Slide 6</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — ROS</span><span class="tag tag-hab">HAB · fish kills</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Unarmoured; cingulum rotates >1.5×</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-yes">Yes (or single)</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:100%;"></div></div>
+        <span class="pct-label pct-label-red">~100%</span>
+      </div>
+      <div class="pct-note">Small genus (~5 spp); all associated with fish kills</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Karenia brevis</span><span class="slide-badge">Slide 7</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — brevetoxins</span><span class="tag tag-hab">HAB · NSP</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Unarmoured; dorsoventrally flattened</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-no">No</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">⚠ Rarely</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:85%;"></div></div>
+        <span class="pct-label pct-label-red">~85%</span>
+      </div>
+      <div class="pct-note">12 accepted spp; most produce brevetoxins or related compounds</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Dinophysis acuminata</span><span class="slide-badge">Slide 9</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — okadaic acid</span><span class="tag tag-hab">HAB · DSP</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Armoured; laterally flattened oval; wide girdle lists</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-no">No</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:30%;"></div></div>
+        <span class="pct-label pct-label-red">~30%</span>
+      </div>
+      <div class="pct-note">~120 spp; ~30–40 confirmed DSP toxin producers</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="group-block">
+  <div class="group-header group-diatom">
+    <div class="group-dot"></div>
+    <span class="group-label">Diatoms</span>
+  </div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-top"><span class="species">Pseudo-nitzschia australis</span><span class="slide-badge">Slide 3</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — domoic acid</span><span class="tag tag-hab">HAB · ASP</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Elongate, fusiform or rectangular in girdle view</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-yes">Yes — overlapping ends, 20+ cells</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:40%;"></div></div>
+        <span class="pct-label pct-label-red">~40%</span>
+      </div>
+      <div class="pct-note">~60 spp; ~25 confirmed domoic acid producers — and not always</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top"><span class="species">Chaetoceros decipiens</span><span class="slide-badge">Slide 5</span></div>
+      <div class="tag-row"><span class="tag tag-safe">Non-toxic</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Rectangular cells; long corner setae</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-yes">Yes — coiled, curved or straight</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-green" style="width:0%;"></div></div>
+        <span class="pct-label pct-label-green">~0%</span>
+      </div>
+      <div class="pct-note">~400 spp; none known to produce toxins</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="group-block">
+  <div class="group-header group-cyano">
+    <div class="group-dot"></div>
+    <span class="group-label">Cyanobacteria</span>
+  </div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-top"><span class="species">Dolichospermum crassum</span><span class="slide-badge">Slide 8</span></div>
+      <div class="tag-row"><span class="tag tag-toxic">Toxic — microcystins, anatoxins, saxitoxins</span><span class="tag tag-hab">HAB · freshwater</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Cylindrical/barrel cells; end cells often hyaline</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-yes">Yes — filamentous multi-cell chains</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">⚠ Adjacent (freshwater)</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-red" style="width:50%;"></div></div>
+        <span class="pct-label pct-label-red">~50%</span>
+      </div>
+      <div class="pct-note">~110 spp; roughly half are toxic — strain-level variation within species</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="group-block">
+  <div class="group-header group-cocco">
+    <div class="group-dot"></div>
+    <span class="group-label">Coccolithophores</span>
+  </div>
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-top"><span class="species">Gephyrocapsa huxleyi</span><span class="slide-badge">Slide 10</span></div>
+      <div class="tag-row"><span class="tag tag-safe">Non-toxic</span></div>
+      <div class="divider"></div>
+      <div class="meta-row"><span class="meta-label">Shape</span><span class="shape-val">Spherical; calcium carbonate coccoliths</span></div>
+      <div class="meta-row"><span class="meta-label">Forms chains</span><span class="meta-val chain-no">No</span></div>
+      <div class="meta-row"><span class="meta-label">In CCE</span><span class="meta-val">✓ Yes</span></div>
+      <div class="divider" style="margin-top:8px;"></div>
+      <div class="meta-label" style="margin-bottom:4px;">% of genus toxic</div>
+      <div class="pct-bar-wrap">
+        <div class="pct-bar-bg"><div class="pct-bar-fill-green" style="width:0%;"></div></div>
+        <span class="pct-label pct-label-green">~0%</span>
+      </div>
+      <div class="pct-note">~2 spp in genus; no toxin production known</div>
+    </div>
+
+  </div>
+</div>
+
+</div>

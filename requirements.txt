@@ -1,0 +1,9 @@
+ipykernel
+jupyterlab
+ete3
+pandas
+numpy
+Biopython
+matplotlib
+scipy
+seaborn
